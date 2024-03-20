@@ -7,4 +7,3 @@ for eto in List:
         print(eto.replace(',', 'ing,'), end=' ')
     else:
         print(eto + 'ing', end=' ')
-
