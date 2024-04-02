@@ -21,8 +21,8 @@ book_5.reserved_status = True
 
 for book in books:
     if book.reserved_status:
-        print(f'Название: ' + book.book_name + ', Автор: ' + book.author + ', страниц: ' + book.count_pages +
+        print('Название: ' + book.book_name + ', Автор: ' + book.author + ', страниц: ' + book.count_pages +
               ', материал: ' + book.material + ', зарезервирована')
     else:
-        print(f'Название: ' + book.book_name + ', Автор: ' + book.author + ', страниц: ' + book.count_pages +
+        print('Название: ' + book.book_name + ', Автор: ' + book.author + ', страниц: ' + book.count_pages +
               ', материал: ' + book.material)

@@ -29,8 +29,8 @@ textbook_3.reserved_status = True
 
 for textbook in textbooks:
     if textbook.reserved_status:
-        print(f'Название: ' + textbook.book_name + ', Автор: ' + textbook.author + ', страниц: ' + textbook.count_pages
+        print('Название: ' + textbook.book_name + ', Автор: ' + textbook.author + ', страниц: ' + textbook.count_pages
               + ', предмет: ' + textbook.subject + ', класс: ' + textbook.group + ', зарезервирована')
     else:
-        print(f'Название: ' + textbook.book_name + ', Автор: ' + textbook.author + ', страниц: ' + textbook.count_pages
+        print('Название: ' + textbook.book_name + ', Автор: ' + textbook.author + ', страниц: ' + textbook.count_pages
               + ', предмет: ' + textbook.subject + ', класс: ' + textbook.group)
