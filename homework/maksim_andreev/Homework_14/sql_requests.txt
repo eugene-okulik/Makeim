@@ -1,0 +1,37 @@
+INSERT INTO `groups` (title,start_date,end_date) VALUES ('andreev_group','mart','june');
+
+INSERT INTO students (name,second_name,group_id) VALUES ('Maksim','Andreev',997);
+
+INSERT INTO subjets (title) VALUES ('Chronoscope');
+INSERT INTO subjets (title) VALUES ('Emotional_Int');
+
+INSERT INTO lessons (title, subject_id) VALUES ('Chrono_Planning', 1413);
+INSERT INTO lessons (title, subject_id) VALUES ('Chrono_Study', 1413);
+
+INSERT INTO lessons (title, subject_id) VALUES ('Control_Stress', 1414);
+INSERT INTO lessons (title, subject_id) VALUES ('Recognition_Emotions', 1414);
+
+INSERT INTO books (title,taken_by_student_id) VALUES ('Chrono_Book',1083);
+INSERT INTO books (title,taken_by_student_id) VALUES ('Emotion_Book',1083);
+INSERT INTO books (title,taken_by_student_id) VALUES ('Everything_Book',1083);
+
+INSERT INTO marks (value,lesson_id,student_id) VALUES ('5',3479,1083);
+INSERT INTO marks (value,lesson_id,student_id) VALUES ('5',3480,1083);
+INSERT INTO marks (value,lesson_id,student_id) VALUES ('5',3481,1083);
+INSERT INTO marks (value,lesson_id,student_id) VALUES ('5',3478,1083);
+
+SELECT value FROM marks WHERE student_id=1083
+
+SELECT title FROM books WHERE taken_by_student_id=1083
+
+SELECT s.name, s.second_name, g.title AS GRUPPA, b.title AS BOOK, l.title AS LESSON_TITLE, m.value AS OCENKA, s2.title AS PREDMET
+FROM students s
+JOIN `groups` g ON s.group_id = g.id
+JOIN books b ON s.id = b.taken_by_student_id
+JOIN marks m ON s.id = m.student_id
+JOIN lessons l ON m.lesson_id = l.id
+JOIN subjets s2 ON l.subject_id = s2.id
+WHERE s.id=1083
+
+
+
