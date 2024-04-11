@@ -46,7 +46,7 @@ for lesson_id, mark in zip(lesson_ids, marks):
     cursor.execute(marks_query, (mark, lesson_id, student_id))
 
 final_query = 'SELECT s.name, s.second_name, g.title AS group_title, b.title AS book_title, l.title AS lesson_title,'\
-                    ' m.value AS mark FROM students s JOIN `groups` g ON s.group_id = g.id JOIN books b '\
+                    'm.value AS mark FROM students s JOIN `groups` g ON s.group_id = g.id JOIN books b '\
                     'ON s.id = b.taken_by_student_id JOIN marks m ON s.id = m.student_id JOIN lessons l '\
                     'ON m.lesson_id = l.id JOIN subjets subj ON l.subject_id = subj.id WHERE s.id = %s'
 cursor.execute(final_query, (student_id,))
