@@ -12,7 +12,7 @@ def post_a_post():
         }
     }
     headers = {"content-type": "application/json"}
-    response = requests.post(f'https://api.restful-api.dev/objects', json=body, headers=headers).json()
+    response = requests.post('https://api.restful-api.dev/objects', json=body, headers=headers).json()
     return response['id']
 
 
@@ -49,10 +49,10 @@ def patch_a_post():
 def delete_a_post():
     post_id = post_a_post()
     response = requests.delete(f'https://api.restful-api.dev/objects/{post_id}')
+    print(response)
 
 
 post_a_post()
 put_a_post()
 patch_a_post()
 delete_a_post()
-
