@@ -30,6 +30,16 @@ def post_and_delete():
 
 
 @pytest.mark.critical
+def test_post_a_new_object(post_and_delete, start_end, before_after):
+    body = {"name": "Apple MacBook Pro 16", "data": {"year": 2019, "price": 1849.99,
+            "CPU model": "Intel Core i9", "Hard disk size": "1 TB"}}
+    headers = {"content-type": "application/json"}
+    response = requests.post('https://api.restful-api.dev/objects', json=body, headers=headers)
+    assert response.status_code == 200
+    assert response.json()['name'] == 'Apple MacBook Pro 16'
+
+
+@pytest.mark.critical
 def test_put_a_post(post_and_delete, start_end, before_after):
     post_id = post_and_delete
     body = {
