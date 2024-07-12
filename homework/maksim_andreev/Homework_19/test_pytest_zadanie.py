@@ -42,7 +42,7 @@ def test_post_a_new_object(post_and_delete, start_end, before_after):
         body = {"name": "Apple MacBook Pro 16", "data": {"year": 2019, "price": 1849.99,
                 "CPU model": "Intel Core i9", "Hard disk size": "1 TB"}}
         headers = {"content-type": "application/json"}
-    with allure.step(f'Run post request for new object'):
+    with allure.step('Run post request for new object'):
         response = requests.post('https://api.restful-api.dev/objects', json=body, headers=headers)
     with allure.step('Check response status (200)'):
         assert response.status_code == 200
