@@ -1,25 +1,25 @@
 import pytest
-from endpoints.create_post import CreatePost
-from endpoints.update_post import UpdatePost
-from endpoints.modify_post import ModifyPost
-from endpoints.delete_post import DeletePost
+from endpoints.create_object import CreateObject
+from endpoints.update_object import UpdateObject
+from endpoints.modify_object import ModifyObject
+from endpoints.delete_object import DeleteObject
 
 
 @pytest.fixture()
-def create_post_endpoint():
-    return CreatePost()
+def create_object_endpoint():
+    return CreateObject()
 
 
 @pytest.fixture()
-def update_post_endpoint():
-    return UpdatePost()
+def update_object_endpoint():
+    return UpdateObject()
 
 
 @pytest.fixture()
-def modify_post_endpoint():
-    return ModifyPost()
+def modify_object_endpoint():
+    return ModifyObject()
 
 
 @pytest.fixture()
-def delete_post_endpoint():
-    return DeletePost()
+def delete_object_endpoint():
+    return DeleteObject()

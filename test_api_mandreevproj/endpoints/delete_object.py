@@ -3,10 +3,10 @@ import allure
 from endpoints.endpoint import Endpoint
 
 
-class DeletePost(Endpoint):
+class DeleteObject(Endpoint):
 
     @allure.step('Request to delete created object')
-    def delete_post(self, post_id):
+    def delete_object(self, post_id):
         self.response = requests.delete(
             f'{self.url}/{post_id}'
         )

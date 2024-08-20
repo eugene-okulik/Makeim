@@ -3,10 +3,10 @@ import allure
 from endpoints.endpoint import Endpoint
 
 
-class UpdatePost(Endpoint):
+class UpdateObject(Endpoint):
 
     @allure.step('Update a post')
-    def make_changes_in_post(self, post_id, payload, headers=None):
+    def make_changes_in_object(self, post_id, payload, headers=None):
         headers = headers if headers else self.headers
         self.response = requests.put(
             f'{self.url}/{post_id}',
