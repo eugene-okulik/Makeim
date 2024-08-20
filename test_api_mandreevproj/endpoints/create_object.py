@@ -15,4 +15,3 @@ class CreateObject(Endpoint):
         )
         self.json = self.response.json()
         return self.response
-
