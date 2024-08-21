@@ -18,6 +18,11 @@ PATCH_DATA = [
     {"name": "Apple MacBook Pro 11", "data": {"price": 2000.99, "CPU model": "Intel Core i9"}}
 ]
 
+UPDATE_DATA = [
+    {"name": "Apple MacBook Pro 24", "data": {"year": 2012, "price": 184.99,
+                                              "CPU model": "Intel Core i9", "Hard disk size": "1 TB"}}
+]
+
 
 @pytest.mark.parametrize('data', TEST_DATA)
 def test_post_a_new_object(create_object_endpoint, data):
@@ -32,26 +37,19 @@ def test_object_with_array_in_title(create_object_endpoint, data):
     create_object_endpoint.check_bad_request()
 
 
-@pytest.mark.parametrize('data', TEST_DATA)
-def test_put_a_object(update_object_endpoint, create_object_endpoint, data):
-    payload = {"name": "Apple MacBook Pro 24", "data": {"year": 2012, "price": 184.99,
-                                                        "CPU model": "Intel Core i9", "Hard disk size": "1 TB"}}
-    response = create_object_endpoint.create_new_object(payload=data)
-    update_object_endpoint.make_changes_in_object(response.json()['id'], payload)
+@pytest.mark.parametrize('data', UPDATE_DATA)
+def test_put_a_object(update_object_endpoint, create_new_object_endpoint, data):
+    update_object_endpoint.make_changes_in_object(create_new_object_endpoint.json()['id'], data)
     update_object_endpoint.check_response_status_code_is_200()
-    update_object_endpoint.check_response_name_for_object(payload['name'])
+    update_object_endpoint.check_response_name_for_object(data['name'])
 
 
 @pytest.mark.parametrize('data', PATCH_DATA)
-def test_patch_a_object(modify_object_endpoint, create_object_endpoint, data):
-    payload = {"name": "Apple MacBook Pro 11", "data": {"price": 2000.99, "CPU model": "Intel Core i9"}}
-    response = create_object_endpoint.create_new_object(payload=data)
-    modify_object_endpoint.partial_update_in_object(response.json()['id'], payload)
-    modify_object_endpoint.check_response_name_for_object(payload['name'])
+def test_patch_a_object(modify_object_endpoint, create_new_object_endpoint, data):
+    modify_object_endpoint.partial_update_in_object(create_new_object_endpoint.json()['id'], data)
+    modify_object_endpoint.check_response_name_for_object(data['name'])
 
 
-@pytest.mark.parametrize('data', TEST_DATA)
-def test_delete_a_object(delete_object_endpoint, create_object_endpoint, data):
-    response = create_object_endpoint.create_new_object(payload=data)
-    delete_object_endpoint.delete_object(response.json()['id'])
+def test_delete_a_object(delete_object_endpoint, create_new_object_endpoint):
+    delete_object_endpoint.delete_object(create_new_object_endpoint.json()['id'])
     delete_object_endpoint.check_response_status_code_is_200()
